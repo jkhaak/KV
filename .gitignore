@@ -1,0 +1,14 @@
+*
+
+!/.editorconfig
+!/.gitignore
+!/.formatter.exs
+!/lefthook.yml
+!/mix.exs
+!/README.MD
+
+!/lib/
+!/lib/**/*.ex
+
+!/test/
+!/test/**/*.exs

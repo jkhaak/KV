@@ -1,0 +1,12 @@
+pre-commit:
+  parallel: true
+  commands:
+    format:
+      glob: "*.{ex,exs}"
+      run: mix format {staged_files} && git add {staged_files}
+
+pre-push:
+  parallel: true
+  commands:
+    format:
+      run: mix format --check-formatted
