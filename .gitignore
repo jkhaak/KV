@@ -8,7 +8,9 @@
 !/README.MD
 
 !/lib/
+!/lib/**/
 !/lib/**/*.ex
 
 !/test/
+!/test/**/
 !/test/**/*.exs
