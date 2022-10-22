@@ -24,8 +24,10 @@ defmodule KV.RegistryTest do
     bucket_name = "shopping"
     KV.Registry.create(registry, bucket_name)
     {:ok, bucket} = KV.Registry.lookup(registry, bucket_name)
-
     Agent.stop(bucket)
+
+    # Do a call to ensure the registry processed the DOWN message
+    _ = KV.Registry.create(registry, "bogus")
     assert KV.Registry.lookup(registry, bucket_name) == :error
   end
 
@@ -36,6 +38,9 @@ defmodule KV.RegistryTest do
 
     # Stop the bucket with non-normal reason
     Agent.stop(bucket, :shutdown)
+
+    # Do a call to ensure the registry processed the DOWN message
+    _ = KV.Registry.create(registry, "bogus")
     assert KV.Registry.lookup(registry, bucket_name) == :error
   end
 end
