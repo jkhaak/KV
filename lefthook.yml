@@ -10,3 +10,5 @@ pre-push:
   commands:
     format:
       run: mix format --check-formatted
+    test:
+      run: mix test
